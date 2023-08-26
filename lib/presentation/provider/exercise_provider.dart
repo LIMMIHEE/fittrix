@@ -9,7 +9,7 @@ class ExerciseProvider with ChangeNotifier {
   List<Exercise> get exercises => _exercises;
 
   // api 호출
-  Future<void> fetch() async {
+  Future<void> getExercise() async {
     GetExerciseUseCase getExerciseUseCase =
         GetExerciseUseCase(ExerciseApiRepositoryImpl());
 

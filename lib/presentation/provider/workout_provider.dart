@@ -14,7 +14,8 @@ class WorkoutProvider with ChangeNotifier {
         GetWorkoutUseCase(WorkoutApiRepositoryImpl());
 
     getWorkoutUseCase.call().then((result) {
-      _workouts = result;
+      result.sort((b, a) => a.createTime.compareTo(b.createTime));
+      _workouts = [...result];
       notifyListeners();
     });
   }
@@ -24,7 +25,9 @@ class WorkoutProvider with ChangeNotifier {
         PostWorkoutUseCase(WorkoutApiRepositoryImpl());
 
     postWorkoutUseCase.call(workout).then((result) {
-      _workouts = [..._workouts, result];
+      final newWorkouts = [..._workouts, result];
+      newWorkouts.sort((b, a) => a.createTime.compareTo(b.createTime));
+      _workouts = newWorkouts;
       notifyListeners();
     });
   }

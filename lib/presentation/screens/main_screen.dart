@@ -4,6 +4,7 @@ import 'package:fittrix/presentation/common/utils.dart';
 import 'package:fittrix/presentation/provider/exercise_provider.dart';
 import 'package:fittrix/presentation/provider/login_provider.dart';
 import 'package:fittrix/presentation/provider/video_provider.dart';
+import 'package:fittrix/presentation/provider/workout_provider.dart';
 import 'package:fittrix/presentation/screens/login_screen.dart';
 import 'package:fittrix/presentation/screens/video_screen.dart';
 import 'package:fittrix/presentation/screens/workout_screen.dart';
@@ -31,7 +32,8 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   void initState() {
-    context.read<ExerciseProvider>().fetch();
+    context.read<ExerciseProvider>().getExercise();
+    context.read<WorkoutProvider>().getWorkout();
     super.initState();
   }
 
