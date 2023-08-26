@@ -69,13 +69,21 @@ class WorkoutImageLayout extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
         Container(
-            height: 220,
-            margin: const EdgeInsets.symmetric(horizontal: 24),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(16),
-              image: DecorationImage(
-                  image: NetworkImage(exercise.imageUrl), fit: BoxFit.cover),
-            )),
+          constraints: const BoxConstraints(minHeight: 250),
+          margin: const EdgeInsets.symmetric(horizontal: 24),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(16),
+            child: Image.network(exercise.imageUrl, loadingBuilder:
+                (_, Widget child, ImageChunkEvent? loadingProgress) {
+              if (loadingProgress == null) {
+                return child;
+              }
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            }, fit: BoxFit.fill),
+          ),
+        ),
         Padding(
           padding: const EdgeInsets.only(top: 10, bottom: 40, right: 24),
           child: Text(
