@@ -6,8 +6,16 @@ import 'package:flutter/material.dart';
 
 class WorkoutProvider with ChangeNotifier {
   List<Workout> _workouts = [];
+  String _selectType = '';
 
   List<Workout> get workouts => _workouts;
+  String get type => _selectType;
+
+  void setType(String type) {
+    _selectType = type;
+
+    notifyListeners();
+  }
 
   Future<void> getWorkout() async {
     GetWorkoutUseCase getWorkoutUseCase =

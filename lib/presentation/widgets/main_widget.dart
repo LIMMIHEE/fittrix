@@ -4,10 +4,14 @@ import 'package:flutter/material.dart';
 
 class BottomNavigatorItem extends StatelessWidget {
   const BottomNavigatorItem(
-      {required this.text, required this.isCurrentTab, super.key});
+      {required this.text,
+      required this.isCurrentTab,
+      required this.isActiveTab,
+      super.key});
 
   final String text;
   final bool isCurrentTab;
+  final bool isActiveTab;
 
   @override
   Widget build(BuildContext context) {
@@ -17,14 +21,16 @@ class BottomNavigatorItem extends StatelessWidget {
       alignment: Alignment.center,
       decoration: BoxDecoration(
         color: isCurrentTab ? mainColor : gray,
-        border: Border.all(color: const Color(0xFFA8A8A8)),
+        border: isActiveTab ? Border.all(color: const Color(0xFFA8A8A8)) : null,
         borderRadius: BorderRadius.circular(8),
       ),
       child: Text(
         text,
         textAlign: TextAlign.center,
         style: TextStyle(
-          color: isCurrentTab ? white : mainBlack,
+          color: isCurrentTab
+              ? white
+              : (isActiveTab ? mainBlack : const Color(0xffB9B9B9)),
           fontWeight: FontWeight.w700,
         ),
       ),
@@ -45,6 +51,7 @@ class ExerciseListLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      constraints: const BoxConstraints(maxWidth: 180),
       alignment: AlignmentDirectional.bottomEnd,
       margin: const EdgeInsets.only(bottom: 18),
       child: ListView.builder(

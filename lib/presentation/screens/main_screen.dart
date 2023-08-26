@@ -63,8 +63,8 @@ class _MainScreenState extends State<MainScreen> {
       bottomNavigationBar: Wrap(
         children: [
           const Divider(
-            height: 1,
-            color: Colors.black45,
+            height: 2,
+            color: mainBlack,
           ),
           BottomNavigationBar(
             currentIndex: currentTab,
@@ -77,6 +77,7 @@ class _MainScreenState extends State<MainScreen> {
                 BottomNavigationBarItem(
                     icon: BottomNavigatorItem(
                       isCurrentTab: index == currentTab,
+                      isActiveTab: index == 2 || isLogin,
                       text: tabLabel(index),
                     ),
                     label: '')
@@ -143,6 +144,8 @@ class _MainScreenState extends State<MainScreen> {
         });
       }
       context.read<VideoProvider>().playVideo();
+    } else {
+      context.read<WorkoutProvider>().setType(exercise.name);
     }
   }
 

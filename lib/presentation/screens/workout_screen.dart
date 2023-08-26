@@ -18,21 +18,31 @@ class _WorkoutScreenState extends State<WorkoutScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final workouts =
-        context.select((WorkoutProvider provider) => provider.workouts);
+    final type = context.select((WorkoutProvider provider) => provider.type);
+    final workouts = context
+        .select((WorkoutProvider provider) => provider.workouts)
+        .where(
+            (element) => type.isNotEmpty ? element.exerciseType == type : true)
+        .toList();
 
     return Scaffold(
-      body: SingleChildScrollView(
-        child: ListView.builder(
-            physics: const BouncingScrollPhysics(),
-            shrinkWrap: true,
-            itemCount: workouts.length,
-            itemBuilder: (context, index) {
-              final workout = workouts[index];
+      body: (type.isEmpty || workouts.isEmpty)
+          ? Center(
+              child: Text(
+              type.isEmpty ? "운동 종류를 선택해주세요." : "$type 운동 기록이 존재하지 않습니다.",
+              style: const TextStyle(color: Colors.black45),
+            ))
+          : SingleChildScrollView(
+              child: ListView.builder(
+                  physics: const BouncingScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: workouts.length,
+                  itemBuilder: (context, index) {
+                    final workout = workouts[index];
 
-              return WorkoutListItem(workout: workout);
-            }),
-      ),
+                    return WorkoutListItem(workout: workout);
+                  }),
+            ),
     );
   }
 }
