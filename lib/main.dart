@@ -1,6 +1,8 @@
 import 'package:fittrix/presentation/common/pref_util.dart';
+import 'package:fittrix/presentation/provider/exercise_provider.dart';
 import 'package:fittrix/presentation/provider/login_provider.dart';
 import 'package:fittrix/presentation/provider/video_provider.dart';
+import 'package:fittrix/presentation/provider/workout_provider.dart';
 import 'package:fittrix/presentation/screens/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -12,6 +14,8 @@ void main() async {
   runApp(MultiProvider(providers: [
     ChangeNotifierProvider(create: (_) => LoginProvider()),
     ChangeNotifierProvider(create: (_) => VideoProvider()),
+    ChangeNotifierProvider(create: (_) => ExerciseProvider()),
+    ChangeNotifierProvider(create: (_) => WorkoutProvider()),
   ], child: const MyApp()));
 }
 

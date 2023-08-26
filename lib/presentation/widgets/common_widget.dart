@@ -1,11 +1,12 @@
 import 'package:fittrix/presentation/colors.dart';
 import 'package:flutter/material.dart';
 
-PreferredSizeWidget defaultAppBar(BuildContext context, {Widget? title}) {
+PreferredSizeWidget defaultAppBar(BuildContext context,
+    {Widget? title, Color? backgroundColor}) {
   return AppBar(
     elevation: 0,
     title: title,
-    backgroundColor: Colors.transparent,
+    backgroundColor: backgroundColor ?? Colors.transparent,
     leading: GestureDetector(
       onTap: () {
         Navigator.pop(context);
