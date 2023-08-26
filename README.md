@@ -37,7 +37,7 @@
 - 요구사항을 기반으로 MockAPI 및 앱 구조 구성
 - 앱 디자인 세부화
     - 디자인을 토대로 동작 구성 및 아이디어 정리
-    - [피그마 링크](https://www.figma.com/file/szIbxk0bh0gNqVvWoleU60/fittrix?type=design&node-id=1%3A54&mode=design&t=I4juplaW7HiqrAYn-1)
+    - [피그마 링크](https://www.figma.com/file/szIbxk0bh0gNqVvWoleU60/fittrix?type=design&node-id=0%3A1&mode=design&t=iTk2IlRCHhUD0tu2-1)
 - 기타 이미지 자료 수집
 - 초안 기획 및 디자인 기반으로 개발 진행
 
